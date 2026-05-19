@@ -1,0 +1,166 @@
+/* ============================================================
+   hero.css — Hero section & stats strip
+   ============================================================ */
+
+/* ── Custom cursor ── */
+.cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid var(--sand);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.18s ease;
+  mix-blend-mode: difference;
+}
+
+/* ── Hero ── */
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  height: 100%; width: 100%;
+  background:
+    radial-gradient(ellipse at 70% 60%, rgba(212,98,42,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(74,92,58,0.18) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(15,10,5,0.3) 0%, rgba(15,10,5,0.5) 50%, rgba(15,10,5,0.9) 100%),
+    url('https://www.awf.org/sites/default/files/2025-08/Ariel%20Gakunga_KE_Amboseli%20Recce_March_2025--2%20%281%29-2.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  transform: scale(1.05);
+  transition: transform 8s ease-out;
+}
+#hero.loaded .hero-bg { transform: scale(1); }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 2rem;
+  max-width: 900px;
+}
+
+.hero-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.6rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s 0.3s forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--ivory);
+  margin-bottom: 1.6rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s 0.55s forwards;
+}
+.hero-title em { font-style: italic; color: var(--sand); }
+
+.hero-sub {
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--fog);
+  opacity: 0;
+  max-width: 520px;
+  margin: 0 auto 2.8rem;
+  animation: fadeUp 0.9s 0.8s forwards;
+  transform: translateY(20px);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s 1.05s forwards;
+  transform: translateY(20px);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 1s 1.6s forwards;
+}
+.hero-scroll span {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(var(--gold), transparent);
+  animation: scrollPulse 2s infinite;
+}
+
+/* ── Stats strip ── */
+.stats-strip {
+  background: var(--dusk);
+  border-top: 1px solid rgba(212,184,150,0.12);
+  border-bottom: 1px solid rgba(212,184,150,0.12);
+  padding: 2.4rem 4rem;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+}
+
+.stat { text-align: center; }
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--gold);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sand);
+  opacity: 0.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .stats-strip { padding: 2rem; gap: 2.5rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+}
